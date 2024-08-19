@@ -1,57 +1,52 @@
 import React, { useEffect, useState } from "react";
-//import { Link } from "react-scroll";
 import { Link } from "react-router-dom";
 import { database, ref, set } from "./firebase";
-import { BrowserRouter as Router , Routes, Route } from "react-router-dom";
 import "./Home.css"; // Import CSS for styling
 import guru from './assets/Group 50.png';
 
 const Home = () => {
   const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
-  const[error, setError] = useState ("");
-  
+  const [error, setError] = useState("");
+
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsHeaderScrolled(true);
-      } else {
-        setIsHeaderScrolled(false);
-      }
+      setIsHeaderScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
 
+    // Clean up the event listener on component unmount
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-  const handelInputChange = (e) => {
+  const handleInputChange = (e) => {
     setPhoneNumber(e.target.value);
     setError("");
   };
 
-  const handelDownloadClick = () =>{
+  const handleDownloadClick = () => {
     if (!phoneNumber) {
-      setError ("Please enter your mobile number");
+      setError("Please enter your mobile number");
       return;
     }
 
     const phoneRef = ref(database, 'phoneNumbers/' + phoneNumber);
     set(phoneRef, {
-      phoneNumber : phoneNumber,
+      phoneNumber: phoneNumber,
       timestamp: new Date().toISOString(),
     })
-.then(() => {
-  //generate download link
-  const downloadLink = "http://your-download-link.com";
-  window.location.href= downloadLink;
-})
-.catch ((error)=>{
-  console.error("Error saving phone number:", error);
-  setError("Failed to save phone number, try agin later");
-});
+      .then(() => {
+        // Generate download link
+        const downloadLink = "http://your-download-link.com";
+        window.location.href = downloadLink;
+      })
+      .catch((error) => {
+        console.error("Error saving phone number:", error);
+        setError("Failed to save phone number, try again later");
+      });
   };
 
   return (
@@ -66,9 +61,9 @@ const Home = () => {
         </div>
         <nav>
           <ul>
-          <li><Link to="/Home">Home</Link></li>
+            <li><Link to="/">Home</Link></li>
             <li><Link to="/About">About</Link></li>
-            <li><Link to="/Policies">Terms & Conditions</Link></li>
+            <li><Link to="/Policies">Terms</Link></li>
             <li><Link to="/Blogs">Blogs</Link></li>
           </ul>
         </nav>
@@ -81,15 +76,16 @@ const Home = () => {
           <h2>into <span className="currency-symbol">₹</span>ewards</h2>
           <p>Download and join the fastest growing community</p>
           <div className="download-section">
-            <input type="text" 
-            placeholder="+91" 
-            value = {phoneNumber}
-            onChange={handelInputChange}
-            className="phone-input"
-             />
-           <button className="download-btn" onClick={handelDownloadClick}>
-                     Download
-             </button>
+            <input
+              type="text"
+              placeholder="+91"
+              value={phoneNumber}
+              onChange={handleInputChange}
+              className="phone-input"
+            />
+            <button className="download-btn" onClick={handleDownloadClick}>
+              Download
+            </button>
             {error && <p className="error-message">{error}</p>}
           </div>
         </div>
@@ -125,6 +121,7 @@ const Home = () => {
         </div>
         <p className="more-categories">And Many More Categories to Explore!</p>
       </section>
+
       {/* How to Play Section */}
       <section className="how-to-play" id="blogs-section">
         <h2>How to Play</h2>

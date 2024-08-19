@@ -1,53 +1,145 @@
-.about-page {
-  font-family: Arial, sans-serif;
+/* Ensure the body doesn't scroll */
+body {
+  overflow: hidden;
+  height: 100vh;
+  margin: 0;
 }
 
+/* About Page container setup */
+.about-page {
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
+  height: 100vh;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Header remains fixed and takes up space at the top */
 .about-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-   background-color: #594187;
+  background-color: #594187;
   padding: 20px;
+  
   border-bottom: 2px solid #ddd;
 }
 
 .about-title {
   font-size: 24px;
+  color: white;
   font-weight: bold;
+  text-align: center;
+}
+/* Main content is scrollable */
+.content-wrapper {
+  overflow-y: auto;
+  flex: 1; /* Ensures it takes the remaining space between header and footer */
+  padding: 20px;
 }
 
-.about-nav ul {
-  list-style-type: none;
-  display: flex;
-  gap: 15px;
-  margin: 0;
-  padding: 0;
-}
-
-.about-nav li {
-  margin: 0;
-}
-
-.about-nav a {
-  text-decoration: none;
+/* Footer is fixed at the bottom, reduced size */
+.footer {
+  background-color: #594187;
   color: #ffffff;
-  font-weight: bold;
+  text-align: center;
+  height: 100px; /* Reduced height */
+  padding: 10px 0; /* Reduced padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.about-nav a:hover {
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  margin: 0px;
+}
+
+.footer-section a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
   color: #007BFF;
 }
-.footer {
-    background-color: #594187;
-    text-align: center;
-    
-     height: 180px;
-    color: #ffffff;
+
+.footer-bottom {
+  margin-top: 10px;
+  font-size: 12px; /* Slightly smaller text */
+}
+
+/* Main section styling */
+main {
+  padding: 20px;
+}
+
+/* General styling for sections */
+section {
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f8f8f8;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling */
+.section-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.animated-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Add a bottom border to section titles */
+.section-title::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background-color: #007BFF;
+  left: 0;
+  bottom: -5px;
+}
+
+
+.footer-section p {
+  display: flex;
+  align-items: center;
+}
+
+.footer-section p svg {
+  margin-right: 8px; /* Adds space between the icon and text */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 18px;
   }
+
+  .animated-text {
+    font-size: 15px;
+  }
+
   .footer {
-    background-color: #594187;
-    text-align: center;
-    
-     height: 180px;
-    color: #ffffff;
+    height: 80px; /* Further reduce the footer size for mobile */
   }
+
+  .footer-bottom {
+    font-size: 10px;
+  }
+}

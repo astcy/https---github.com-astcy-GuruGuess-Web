@@ -103,6 +103,7 @@ nav {
 nav ul {
   list-style: none;
   display: flex;
+  font-style: normal;
   gap: 20px;
   padding: 0;
   margin: 0;
@@ -111,6 +112,7 @@ nav ul {
 /* Navigation LI styles */
 nav li {
   font-size: 1rem;
+  font-style: normal;
   color: #ffffff;
 }
 
@@ -119,19 +121,11 @@ nav a, .contact-btn {
   text-decoration: none;
   color: #ffffff; /* Link color */
   font-weight: bold;
+  font-style: normal;
 }
 
-.contact-btn {
-  background-color: #e8dff8;
-  color: #6a60ad;
-  border: none;
-  padding: 10px;
-  border-radius: 8px;
-}
 
-.contact-btn:hover {
-  background-color: #d0c3f0;
-}
+
 
 /* Main Section styles */
 .main-section {
