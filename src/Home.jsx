@@ -3,24 +3,56 @@ import { Link } from "react-router-dom";
 import { database, ref, set } from "./firebase";
 import "./Home.css"; // Import CSS for styling
 import guru from './assets/Group 50.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faPhone, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 const Home = () => {
   const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [error, setError] = useState("");
+  const [isMenuVisible, setMenuVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsHeaderScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    const handleClickOutsideMenu = (event) => {
+      if (!event.target.closest('.full-page-menu') && !event.target.closest('.hamburger-menu')) {
+        setMenuOpen(false);
+      }
+    };
 
-    // Clean up the event listener on component unmount
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('click', handleClickOutsideMenu);
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('click', handleClickOutsideMenu);
     };
   }, []);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const toggleSmallMenu = () => {
+    setMenuVisible(!isMenuVisible);
+  };
+
+  const handleLinkClick = (event) => {
+    event.preventDefault();
+    setMenuOpen(false);
+    setMenuVisible(false);
+    window.location.href = event.target.href;
+  };
+
+  const isValidPhoneNumber = (phone) => {
+    const phoneRegex = /^\+91\d{10}$/;
+    return phoneRegex.test(phone);
+  };
 
   const handleInputChange = (e) => {
     setPhoneNumber(e.target.value);
@@ -32,6 +64,10 @@ const Home = () => {
       setError("Please enter your mobile number");
       return;
     }
+    if (!isValidPhoneNumber(phoneNumber)) {
+      setError("Please enter a valid 10-digit mobile number with +91");
+      return;
+    }
 
     const phoneRef = ref(database, 'phoneNumbers/' + phoneNumber);
     set(phoneRef, {
@@ -39,7 +75,6 @@ const Home = () => {
       timestamp: new Date().toISOString(),
     })
       .then(() => {
-        // Generate download link
         const downloadLink = "http://your-download-link.com";
         window.location.href = downloadLink;
       })
@@ -59,78 +94,116 @@ const Home = () => {
           </div>
           <div className="logo-text">GuruGuess</div>
         </div>
-        <nav>
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/About">About</Link></li>
-            <li><Link to="/Policies">Terms</Link></li>
-            <li><Link to="/Blogs">Blogs</Link></li>
+        <nav className="desktop-nav">
+          <ul className={`nav-list ${menuOpen ? 'open' : ''}`}>
+            <li><Link to="/" className={window.location.pathname === '/' ? 'active' : ''}>Home</Link></li>
+            <li><Link to="/about" className={window.location.pathname === '/about' ? 'active' : ''}>About</Link></li>
+            <li><Link to="/terms" className={window.location.pathname === '/terms' ? 'active' : ''}>Terms</Link></li>
+            <li><Link to="/blogs" className={window.location.pathname === '/blogs' ? 'active' : ''}>Blogs</Link></li>
           </ul>
+          <div className={`hamburger-menu ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </nav>
       </header>
 
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="full-page-menu active">
+          <button className="close-menu-btn" onClick={toggleMenu}>
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </button>
+          <ul className="activeMenu">
+            <li><Link to="/" onClick={handleLinkClick} className={window.location.pathname === '/' ? 'active' : ''}>Home</Link></li>
+            <li> <Link to="/about" onClick={handleLinkClick} className={window.location.pathname === '/about' ? 'active' : ''}>About</Link></li>
+            <li><Link to="/terms" onClick={handleLinkClick} className={window.location.pathname === '/terms' ? 'active' : ''}>Terms</Link></li>
+            <li><Link to="/blogs" onClick={handleLinkClick} className={window.location.pathname === '/blogs' ? 'active' : ''}>Blogs</Link></li>
+          </ul>
+        </div>
+      )}
+
+      {/* Small Screen Menu */}
+      <div className="menu">
+        <button className="hamburger" onClick={toggleSmallMenu}>☰</button>
+        {isMenuVisible && (
+          <nav className="nav-components">
+            <ul>
+              <li><a href="#home" onClick={handleLinkClick}>Home</a></li>
+              <li><a href="#about" onClick={handleLinkClick}>About</a></li>
+              <li><a href="#services" onClick={handleLinkClick}>Services</a></li>
+              <li><a href="#contact" onClick={handleLinkClick}>Contact</a></li>
+            </ul>
+          </nav>
+        )}
+      </div>
+
       {/* Main Section */}
-      <section className="main-section" id="about-section">
-        <div className="hero-content">
-          <h1>Turn Your Knowledge</h1>
-          <h2>into <span className="currency-symbol">₹</span>ewards</h2>
-          <p>Download and join the fastest growing community</p>
-          <div className="download-section">
-            <input
-              type="text"
-              placeholder="+91"
-              value={phoneNumber}
-              onChange={handleInputChange}
-              className="phone-input"
-            />
-            <button className="download-btn" onClick={handleDownloadClick}>
-              Download
-            </button>
-            {error && <p className="error-message">{error}</p>}
+      <main>
+        <section className="home-section" id="home-section">
+          <div className="hero-content">
+            <h1>Turn Your Knowledge</h1>
+            <h2>into <span className="currency-symbol">₹</span>ewards</h2>
+            <div className="download-section">
+              <input
+                type="text"
+                placeholder="+91"
+                value={phoneNumber}
+                onChange={handleInputChange}
+                className="phone-input"
+              />
+              <button className="download-btn" onClick={handleDownloadClick}>
+                Download
+              </button>
+              {error && <p className="error-message">{error}</p>}
+            </div>
+          </div>
+          <div className="hero-image">
+            <img src={guru} alt="Hero" />
+          </div>
+        </section>
+
+        {/* Quiz Categories Section */}
+        <section className="quiz-categories" id="policies-section">
+          <h2>Explore our quiz Categories</h2>
+          <div className="categories-container">
+            <div className="category-card">
+              <h3>Science</h3>
+              <p>Nothing can be created, nothing can be destroyed.</p>
+            </div>
+            <div className="category-card">
+              <h3>Maths</h3>
+              <p>The easiest and the toughest game is always of numbers.</p>
+            </div>
+            <div className="category-card">
+              <h3>Tech</h3>
+              <p>Thinking beyond the boundaries is called technology.</p>
+            </div>
+            <div className="category-card">
+              <h3>English</h3>
+              <p>Speaking is not enough to communicate, it's action that makes you.</p>
+            </div>
+            {/* Add other categories similarly */}
+          </div>
+        </section>
+      </main>
+
+      {/* Footer Section */}
+      <footer className="terms-footer">
+        <div className="terms-footer-content">
+          <div className="terms-footer-section contact-info">
+            <p><FontAwesomeIcon icon={faEnvelope} /> Email: <a href="mailto:guruguesss@gmail.com">guruguesss@gmail.com</a></p>
+            <p><FontAwesomeIcon icon={faInstagram} /> Instagram: <a href="https://www.instagram.com/guruguesss" target="_blank" rel="noopener noreferrer">@guruguesss</a></p>
+          </div>
+          <div className="terms-footer-section">
+            <p><FontAwesomeIcon icon={faPhone} /><a href="tel:9140293443">Contact Us 9140293443</a></p>
+            <p><FontAwesomeIcon icon={faPhone} /><a href="tel:7460802449">For more queries contact on 7460802449</a></p>
           </div>
         </div>
-        <div className="hero-image">
-          {/* Add hero image or illustration */}
+        <div className="terms-footer-bottom">
+          <p>© 2024 Guruguess. All rights reserved.</p>
         </div>
-      </section>
-
-      {/* Quiz Categories Section */}
-      <section className="quiz-categories" id="policies-section">
-        <h2>Explore our quiz Categories</h2>
-        <div className="categories-container">
-          <div className="category-card">
-            <h3>Science</h3>
-            <p>Nothing can be created, nothing can be destroyed.</p>
-          </div>
-          <div className="category-card">
-            <h3>Maths</h3>
-            <p>The easiest and the toughest game is always of numbers.</p>
-          </div>
-          <div className="category-card">
-            <h3>Tech</h3>
-            <p>Thinking beyond the boundaries is called technology.</p>
-          </div>
-          <div className="category-card">
-            <h3>English</h3>
-            <p>Speaking is not enough to communicate, it's action that makes you.</p>
-          </div>
-          <div className="category-card">
-            <h3>Politics</h3>
-            <p>The one who can make change in society is known as a leader.</p>
-          </div>
-        </div>
-        <p className="more-categories">And Many More Categories to Explore!</p>
-      </section>
-
-      {/* How to Play Section */}
-      <section className="how-to-play" id="blogs-section">
-        <h2>How to Play</h2>
-        {/* Add content for this section */}
-      </section>
-
-      {/* Footer */}
-      <footer className="footer">
-        <p>© 2024 Guruguess. All rights reserved.</p>
       </footer>
     </div>
   );
