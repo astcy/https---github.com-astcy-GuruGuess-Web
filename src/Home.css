@@ -34,6 +34,7 @@
 
 /* Logo container styles */
 .logo-container {
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -181,6 +182,7 @@ nav a.active::after {
 .full-page-menu.active {
   transform: translateY(0);
   opacity: 1;
+  display: block;
 }
 
 /* Full Page Menu UL styles */
@@ -197,6 +199,69 @@ nav a.active::after {
 /* Full Page Menu LI styles */
 .full-page-menu li {
   font-size: 1.5rem;
+}
+
+/* Home.css */
+
+.popup {
+  position: absolute ; /* Ensures popups are positioned relative to the viewport */
+  top: 100%; /* Adjust this based on your header height */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #594187;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1001; /* Ensure popups are above other content */
+  text-align: center;
+  display: none; /* Initially hidden */
+}
+/* Show popup only when not scrolled */
+.header:not(.scrolled) .popup {
+  display: block;
+}
+.error-message {
+  position: fixed; /* Ensures popups are positioned relative to the viewport */
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px); /* Make popups responsive */
+  max-width: 400px; /* Limit maximum width */
+  background-color: #594187;
+  color: #fff;
+  border: 1px solid #d8000c;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1001; /* Ensure popups are above other content */
+  text-align: center;
+  display: none; /* Initially hidden */
+}
+
+
+
+/* Header Popup Styles */
+.popup {
+  top: 10px; /* Position at the top of the viewport */
+}
+
+/* Error Popup Styles */
+.error-message {
+  bottom: 500px; /* Position at the bottom of the viewport */
+}
+
+/* Showing the popups */
+.popup.show, .error-message.show {
+  display: block; /* Show popups when necessary */
+}
+
+
+.header.scrolled .popup {
+  display: none; /* Hide popup when scrolled */
+}
+
+.header:not(.scrolled) .popup {
+  display: block; /* Show popup when not scrolled */
 }
 
 /* Full Page Menu Links styles */
@@ -258,10 +323,22 @@ nav a.active::after {
   margin-top: 100vh;
 }
 
+
+
+/* Error Message in Main Section */
+.home-section .error-message {
+  display: none; /* Initially hidden */
+}
+
+.home-section .error-message.show {
+  display: block; /* Show when error occurs */
+}
 /* Hero Content styles */
 .hero-content {
   max-width: 65%;
 }
+
+
 
 .hero-content h1,
 .hero-content h2 {
@@ -465,6 +542,16 @@ margin-bottom: 50px;
   .nav-list {
     display: none;
   }
+   .error-message {
+    width: calc(100% - 20px); /* Adjust for smaller screens */
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+  .popup {
+    width: 90%; /* Adjust width for small screens */
+    font-size: 14px; /* Reduce font size for smaller devices */
+    top: 120%; /* Adjust vertical position if needed */
+  }
 
 }
 
@@ -482,10 +569,32 @@ margin-bottom: 50px;
   .logo-text {
     font-size: 1.5rem;
   }
+  
+  .error-message {
+    width: calc(100% - 10px); /* Adjust further for very small screens */
+    font-size: 0.8rem;
+    padding: 6px;
+  }
+  .popup {
+    width: 95%; /* Increase width for very small screens */
+    font-size: 12px; /* Further reduce font size */
+    top: 130%; /* Adjust further if needed */
+  }
+
+  .hero-content {
+    padding-top: 60px; }
 }
 
 .activeMenu li{
   font-size: 1.5rem;
   font-style: normal;
   color: #ffffff;
+}
+/* Header popup adjustments for large screens */
+@media (min-width: 1024px) {
+  .popup {
+    top: 180px; /* Adjust the position just above the text */
+    font-size: 1.2rem; /* Adjust font size for large screens */
+    padding: 10px 20px; /* Adjust padding */
+  }
 }

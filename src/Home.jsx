@@ -13,6 +13,7 @@ const Home = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [error, setError] = useState("");
   const [isMenuVisible, setMenuVisible] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +34,46 @@ const Home = () => {
       window.removeEventListener('click', handleClickOutsideMenu);
     };
   }, []);
+
+// Function to show or hide the header popup
+const togglePopup = (show) => {
+  const popup = document.querySelector('.popup');
+  if (show) {
+    popup.classList.add('show');
+  } else {
+    popup.classList.remove('show');
+  }
+};
+
+// Function to show or hide the error message
+const showErrorPopup = (message) => {
+  const errorPopup = document.querySelector('.error-message');
+  errorPopup.textContent = message;
+  errorPopup.classList.add('show');
+  setTimeout(() => {
+    errorPopup.classList.remove('show');
+  }, 2000); // Hide after 2 seconds
+};
+
+
+  useEffect(() => {
+    const initialPopupTimer = setTimeout(() => {
+      setShowPopup(true);
+      setTimeout(() => setShowPopup(false), 2000); // Popup disappears after 2 seconds
+    }, 500); // Delay before first showing the popup
+
+    const regeneratePopupTimer = setTimeout(() => {
+      setShowPopup(true);
+      setTimeout(() => setShowPopup(false), 2000); // Popup disappears after 2 seconds
+    }, 10500); // Popup reappears after 10 seconds on reload
+
+    return () => {
+      clearTimeout(initialPopupTimer);
+      clearTimeout(regeneratePopupTimer);
+    };
+  }, []);
+
+
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -59,13 +100,22 @@ const Home = () => {
     setError("");
   };
 
+  const showError = (message) => {
+    setError(message);
+
+    // Automatically hide the error message after 2 seconds
+    setTimeout(() => {
+      setError('');
+    }, 2000); // 2 seconds display time
+  };
+
   const handleDownloadClick = () => {
     if (!phoneNumber) {
-      setError("Please enter your mobile number");
+      showError("Please enter your mobile number");
       return;
     }
     if (!isValidPhoneNumber(phoneNumber)) {
-      setError("Please enter a valid 10-digit mobile number with +91");
+      showError("Please enter a valid 10-digit mobile number with +91");
       return;
     }
 
@@ -80,7 +130,7 @@ const Home = () => {
       })
       .catch((error) => {
         console.error("Error saving phone number:", error);
-        setError("Failed to save phone number, try again later");
+        showError("Failed to save phone number, try again later");
       });
   };
 
@@ -93,6 +143,12 @@ const Home = () => {
             <img src={guru} alt="Logo" className="logo-image" />
           </div>
           <div className="logo-text">GuruGuess</div>
+           {/* Popup in the Header */}
+           {showPopup && !isHeaderScrolled && (
+            <div className="popup">
+              <p>SwipeUp ⬆️ </p>
+            </div>
+          )}
         </div>
         <nav className="desktop-nav">
           <ul className={`nav-list ${menuOpen ? 'open' : ''}`}>
@@ -156,7 +212,7 @@ const Home = () => {
               <button className="download-btn" onClick={handleDownloadClick}>
                 Download
               </button>
-              {error && <p className="error-message">{error}</p>}
+              {error && <p className={`error-message ${error ? 'show' : 'hide'}`}>{error}</p>}
             </div>
           </div>
           <div className="hero-image">
@@ -208,5 +264,6 @@ const Home = () => {
     </div>
   );
 };
+
 
 export default Home;
