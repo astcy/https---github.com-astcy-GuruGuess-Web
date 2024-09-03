@@ -46,6 +46,11 @@ const About = () => {
             <li><a href="/about" className={window.location.pathname === '/about' ? 'active' : ''}>About</a></li>
             <li><a href="/terms" className={window.location.pathname === '/terms' ? 'active' : ''}>Terms</a></li>
             <li><a href="/blogs" className={window.location.pathname === '/blogs' ? 'active' : ''}>Blogs</a></li>
+            <li><a href= "/Refund" className={window.location.pathname==='/Refund'?'active':''}>Refund</a></li>
+            <li><a href= "/Privacy" className={window.location.pathname==='/Privacy'?'active':''}>Privacy</a></li>
+            <li><a href= "/Contact" className={window.location.pathname==='/Contact'?'active':''}>Contact</a></li>
+
+
           </ul>
 
           <div className={`about-hamburger-menu ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
@@ -68,6 +73,11 @@ const About = () => {
         <a href="/about" onClick={handleLinkClick} className={window.location.pathname === '/about' ? 'active' : ''}>About</a>
         <a href="/terms" onClick={handleLinkClick} className={window.location.pathname === '/terms' ? 'active' : ''}>Terms</a>
         <a href="/blogs" onClick={handleLinkClick} className={window.location.pathname === '/blogs' ? 'active' : ''}>Blogs</a>
+        <a href="/Refund" onClick={handleLinkClick} className={window.location.pathname === '/Refund' ? 'active' : ''}>Refund</a>
+        <a href="/Privacy" onClick={handleLinkClick} className={window.location.pathname === '/Privacy' ? 'active' : ''}>Privacy</a>
+        <a href="/Contact" onClick={handleLinkClick} className={window.location.pathname === '/Contact' ? 'active' : ''}>Contact</a>
+
+
       </div>
 
       <div className="about-content-wrapper">

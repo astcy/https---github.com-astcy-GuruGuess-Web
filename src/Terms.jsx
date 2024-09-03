@@ -46,6 +46,12 @@ const Terms = () => {
             <li><a href="/about" className={window.location.pathname === '/about' ? 'active' : ''}>About</a></li>
             <li><a href="/terms" className={window.location.pathname === '/terms' ? 'active' : ''}>Terms</a></li>
             <li><a href="/blogs" className={window.location.pathname === '/blogs' ? 'active' : ''}>Blogs</a></li>
+            <li><a href= "/Refund" className = {window.location.pathname ==='/Refund'?'active':''}>Refund</a></li>
+            <li><a href= "/Privacy" className = {window.location.pathname ==='/Privacy'?'active':''}>Privacy</a></li>
+            <li><a href= "/Contact" className={window.location.pathname==='/Contact'?'active':''}>Contact</a></li>
+
+
+
           </ul>
 
           <div className={`terms-hamburger-menu ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
@@ -68,29 +74,17 @@ const Terms = () => {
         <a href="/about" onClick={handleLinkClick} className={window.location.pathname === '/about' ? 'active' : ''}>About</a>
         <a href="/terms" onClick={handleLinkClick} className={window.location.pathname === '/terms' ? 'active' : ''}>Terms</a>
         <a href="/blogs" onClick={handleLinkClick} className={window.location.pathname === '/blogs' ? 'active' : ''}>Blogs</a>
+        <a href="/Refund" onClick={handleLinkClick} className={window.location.pathname === '/Refund' ? 'active' : ''}>Refund</a>
+        <a href="/Privacy" onClick={handleLinkClick} className={window.location.pathname === '/Privacy' ? 'active' : ''}>Privacy</a>
+        <a href="/Contact" onClick={handleLinkClick} className={window.location.pathname === '/Contact' ? 'active' : ''}>Contact</a>
+
+
+
       </div>
 
       <div className="terms-content-wrapper">
         <main>
         <section>
-          <section>
-            <h2 className="section-title">1. Introduction</h2>
-            <ul className="mission-points">
-              <li className="animated-text">Welcome to GuruGuess, an online platform that hosts contests based on speed and accuracy of responses.</li>
-              <li className="animated-text">By participating in any contest on GuruGuess, you agree to abide by the following terms and conditions. These terms apply to all users of the platform.</li>
-            </ul>
-          </section>
-
-          {/* Add other sections similarly */}
-          {/* Example Section */}
-          <section>
-            <h2 className="section-title">2. Eligibility</h2>
-            <ul className="mission-points">
-              <li className="animated-text">Participants must be at least 18 years old or the age of majority in their jurisdiction to participate in contests.</li>
-              <li className="animated-text">By registering, you confirm that all information provided is accurate and up-to-date.</li>
-            </ul>
-          </section>
-
 
           <section>
       <h2 className="section-title">1. Introduction</h2>

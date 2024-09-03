@@ -156,6 +156,12 @@ const showErrorPopup = (message) => {
             <li><Link to="/about" className={window.location.pathname === '/about' ? 'active' : ''}>About</Link></li>
             <li><Link to="/terms" className={window.location.pathname === '/terms' ? 'active' : ''}>Terms</Link></li>
             <li><Link to="/blogs" className={window.location.pathname === '/blogs' ? 'active' : ''}>Blogs</Link></li>
+            <li><Link to="/Refund" className={window.location.pathname === '/Refund' ? 'active' : ''}>Refund</Link></li>
+            <li><Link to="/Privacy" className={window.location.pathname === '/Privacy' ? 'active' : ''}>Privacy</Link></li>
+            <li><Link to="/Contact" className={window.location.pathname === '/Contact' ? 'active' : ''}>Contact</Link></li>
+
+
+
           </ul>
           <div className={`hamburger-menu ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
             <span></span>
@@ -176,6 +182,12 @@ const showErrorPopup = (message) => {
             <li> <Link to="/about" onClick={handleLinkClick} className={window.location.pathname === '/about' ? 'active' : ''}>About</Link></li>
             <li><Link to="/terms" onClick={handleLinkClick} className={window.location.pathname === '/terms' ? 'active' : ''}>Terms</Link></li>
             <li><Link to="/blogs" onClick={handleLinkClick} className={window.location.pathname === '/blogs' ? 'active' : ''}>Blogs</Link></li>
+            <li><Link to="/Refund" onClick={handleLinkClick} className={window.location.pathname === '/Refund' ? 'active' : ''}>Refund</Link></li>
+            <li><Link to="/Privacy" onClick={handleLinkClick} className={window.location.pathname === '/Privacy' ? 'active' : ''}>Privacy</Link></li>
+            <li><Link to="/Contact" onClick={handleLinkClick} className={window.location.pathname === '/Contact' ? 'active' : ''}>Contact</Link></li>
+
+
+
           </ul>
         </div>
       )}
@@ -188,8 +200,10 @@ const showErrorPopup = (message) => {
             <ul>
               <li><a href="#home" onClick={handleLinkClick}>Home</a></li>
               <li><a href="#about" onClick={handleLinkClick}>About</a></li>
-              <li><a href="#services" onClick={handleLinkClick}>Services</a></li>
-              <li><a href="#contact" onClick={handleLinkClick}>Contact</a></li>
+              <li><a href="#terms" onClick={handleLinkClick}>Terms</a></li>
+              <li><a href="#blog" onClick={handleLinkClick}>Blog</a></li>
+              <li><a href="#refund" onClick={handleLinkClick}>Refund</a></li>
+
             </ul>
           </nav>
         )}

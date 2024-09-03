@@ -1,0 +1,325 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Terms Page Container */
+  .refund-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+  }
+  
+  /* Header Styling */
+  .refund-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #594187;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .refund-title {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .refund-nav .refund-nav-list {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+  }
+  
+  .refund-nav .refund-nav-list li {
+    display: inline;
+  }
+  
+  .refund-nav .refund-nav-list li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    position: relative;
+    padding: 3px 0;
+  }
+  
+  .refund-nav .refund-nav-list li a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ffffff;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .refund-nav .refund-nav-list li a:hover::after,
+  .refund-nav .refund-nav-list li a.active::after {
+    width: 100%;
+  }
+  
+  .refund-nav .refund-nav-list li a:hover,
+  .refund-nav .refund-nav-list li a.active {
+    color: #e0e0e0;
+  }
+  
+  /* Hamburger Menu */
+  .refund-hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    z-index: 200;
+  }
+  
+  .refund-hamburger-menu span {
+    background-color: #fff;
+    height: 2px;
+    margin: 4px 0;
+    width: 25px;
+    transition: 0.3s;
+  }
+  
+  .refund-hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  .refund-hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .refund-hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+  
+  /* Mobile Menu */
+  .refund-mobile-menu {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 0;
+    z-index: 150;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .refund-mobile-menu.open {
+    display: flex;
+    transform: translateX(0);
+  }
+  
+  .refund-mobile-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    transition: color 0.3s ease;
+  }
+  
+  .refund-mobile-menu a.active {
+    color: #ddd;
+    font-weight: bold;
+  }
+  
+  /* Back Button */
+  .refund-back-button {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .refund-cut-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  /* Terms Content Wrapper */
+  .refund-content-wrapper {
+    margin-top: 80px;
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto;
+  }
+  
+  .refund-section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .refund-text {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  /* Terms Footer */
+  .refund-footer {
+    background-color: #594187;
+    color: #fff;
+    padding: 10px 15px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .refund-footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .refund-footer-left,
+  .refund-footer-right {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+  }
+  
+  .refund-footer-left .refund-footer-section,
+  .refund-footer-right .refund-footer-section {
+    flex: 1;
+    min-width: 150px;
+  }
+  
+  .refund-footer-section p {
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+  
+  .refund-footer-section a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .refund-footer-section a:hover {
+    color: #ddd;
+  }
+  
+  .refund-footer-bottom {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 8px;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .refund-header {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 8px 15px;
+    }
+  
+    .refund-title {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+  
+    .refund-hamburger-menu {
+      display: flex;
+    }
+  
+    .refund-nav .refund-nav-list {
+      display: none;
+    }
+  
+    .refund-mobile-menu {
+      display: flex;
+    }
+  
+    .refund-footer {
+      position: relative;
+    }
+  
+    .refund-content-wrapper {
+      padding: 100px 20px 120px;
+    }
+  
+    .refund-footer-content {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .refund-footer-left,
+    .refund-footer-right {
+      flex-direction: column;
+      align-items: flex-start;
+      min-width: 100%;
+    }
+  
+    .refund-footer-section p {
+      font-size: 12px;
+    }
+  
+    .refund-footer-bottom {
+      font-size: 12px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .refund-title {
+      font-size: 1.1rem;
+    }
+  
+    .refund-footer-content {
+      padding: 8px 10px;
+    }
+  
+    .refund-footer-section p {
+      font-size: 12px;
+    }
+  
+    .refund-footer-bottom {
+      font-size: 11px;
+    }
+  }
+  
+  /* Scrollbar Styling */
+  .refund-content-wrapper::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .refund-content-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  .refund-content-wrapper::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 5px;
+  }
+  
+  .refund-content-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+  }
+  
