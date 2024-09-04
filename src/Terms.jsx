@@ -173,7 +173,11 @@ const Terms = () => {
     <section>
       <h2 className="section-title">12. Contact Information</h2>
       <ul className="mission-points">
-        <li className="animated-text">For any questions or concerns regarding these terms and conditions, please contact our support team at guruguesss@gmail.com</li>
+        <li className="animated-text">For any questions or concerns regarding these terms and conditions, please contact our support team at contactus@guruguess.com</li>
+        <li className="animated-text">Address:26,Kaweli,Pahitiyapur,Jaunpur,UttarPradesh, 222175</li>
+        <li className="animated-text">OPERATED BY: Prajjwal Dubey</li>
+
+
       </ul>
     </section>
           </section>
