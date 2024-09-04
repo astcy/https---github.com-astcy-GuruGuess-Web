@@ -1,4 +1,6 @@
 import React, { useState,useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 import './Contact.css'; // Updated styles
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faPhone, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -43,13 +45,15 @@ const Contact = () => {
         <h1 className="contact-title">Privacy Policy</h1>
         <nav className="contact-nav">
           <ul className={`contact-nav-list ${menuOpen ? 'active' : ''}`}>
-            <li><a href="/" className={window.location.pathname === '/' ? 'active' : ''}>Home</a></li>
-            <li><a href="/about" className={window.location.pathname === '/about' ? 'active' : ''}>About</a></li>
-            <li><a href="/terms" className={window.location.pathname === '/terms' ? 'active' : ''}>Terms & Condition</a></li>
-            <li><a href="/blogs" className={window.location.pathname === '/blogs' ? 'active' : ''}>Blogs</a></li>
-            <li><a href="/Refund" className={window.location.pathname === '/Refund' ? 'active' : ''}>Refund,Return & Cancellation</a></li>
-            <li><a href="/Privacy" className={window.location.pathname === '/Privacy' ? 'active' : ''}>Privacy</a></li>
-            <li><a href="/Contact" className={window.location.pathname === '/Contact' ? 'active' : ''}>Contact</a></li> {/* Added Contact page link */}
+          <li><Link to="/" className={window.location.hash === '#/' ? 'active' : ''}>Home</Link></li>
+            <li><Link to="/about" className={window.location.hash === '#/about' ? 'active' : ''}>About</Link></li>
+            <li><Link to="/terms" className={window.location.hash === '#/terms' ? 'active' : ''}>Terms & Condition</Link></li>
+            <li><Link to="/blogs" className={window.location.hash === '#/blogs' ? 'active' : ''}>Blogs</Link></li>
+            <li><Link to="/Refund" className={window.location.hash === '#/Refund' ? 'active' : ''}>Return,Refund & Cancellation</Link></li>
+            <li><Link to="/Privacy" className={window.location.hash === '#/Privacy' ? 'active' : ''}>Privacy</Link></li>
+            <li><Link to="/Contact" className={window.location.hash === '#/Contact' ? 'active' : ''}>Contact</Link></li>
+
+
           </ul>
 
           <div className={`contact-hamburger-menu ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
@@ -68,13 +72,13 @@ const Contact = () => {
         <div className="contact-cut-button" onClick={toggleMenu}>
           <i className="fas fa-times"></i>
         </div>
-        <a href="/" onClick={handleLinkClick} className={window.location.pathname === '/' ? 'active' : ''}>Home</a>
-        <a href="/about" onClick={handleLinkClick} className={window.location.pathname === '/about' ? 'active' : ''}>About</a>
-        <a href="/terms" onClick={handleLinkClick} className={window.location.pathname === '/terms' ? 'active' : ''}>Terms</a>
-        <a href="/blogs" onClick={handleLinkClick} className={window.location.pathname === '/blogs' ? 'active' : ''}>Blogs</a>
-        <a href="/Refund" onClick={handleLinkClick} className={window.location.pathname === '/Refund' ? 'active' : ''}>Refund</a>
-        <a href="/Privacy" onClick={handleLinkClick} className={window.location.pathname === '/Privacy' ? 'active' : ''}>Privacy</a>
-        <a href="/Contact" onClick={handleLinkClick} className={window.location.pathname === '/Contact' ? 'active' : ''}>Contact</a> {/* Added Contact page link */}
+        <li><Link to="/" onClick={handleLinkClick} className={window.location.hash === '#/' ? 'active' : ''}>Home</Link></li>
+            <li><Link to="/about" onClick={handleLinkClick} className={window.location.hash === '#/about' ? 'active' : ''}>About</Link></li>
+            <li><Link to="/terms" onClick={handleLinkClick} className={window.location.hash === '#/terms' ? 'active' : ''}>Terms</Link></li>
+            <li><Link to="/blogs" onClick={handleLinkClick} className={window.location.hash === '#/blogs' ? 'active' : ''}>Blogs</Link></li>
+            <li><Link to="/Refund" onClick={handleLinkClick} className={window.location.hash === '#/Refund' ? 'active' : ''}>Refund</Link></li>
+            <li><Link to="/Privacy" onClick={handleLinkClick} className={window.location.hash === '#/Privacy' ? 'active' : ''}>Privacy</Link></li>
+            <li><Link to="/Contact" onClick={handleLinkClick} className={window.location.hash === '#/Contact' ? 'active' : ''}>Contact</Link></li>
       </div>
 
       <div className="contact-content-wrapper">
@@ -84,7 +88,7 @@ const Contact = () => {
             <div className="contact-page">
               <h2>Contact Us</h2>
               <p>Email: guruguesss@gmail.com</p>
-              <p>Office: 1234 Office St., City, Country</p>
+              <p>Office: Office Address:26,Kaweli,Pahitiyapur,Jaunpur,UttarPradesh, 222175</p>
               <ContactForm />
             </div>
           </section>

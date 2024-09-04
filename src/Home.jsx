@@ -152,15 +152,13 @@ const showErrorPopup = (message) => {
         </div>
         <nav className="desktop-nav">
           <ul className={`nav-list ${menuOpen ? 'open' : ''}`}>
-            <li><Link to="/" className={window.location.pathname === '/' ? 'active' : ''}>Home</Link></li>
-            <li><Link to="/about" className={window.location.pathname === '/about' ? 'active' : ''}>About</Link></li>
-            <li><Link to="/terms" className={window.location.pathname === '/terms' ? 'active' : ''}>Terms & Condition</Link></li>
-            <li><Link to="/blogs" className={window.location.pathname === '/blogs' ? 'active' : ''}>Blogs</Link></li>
-            <li><Link to="/Refund" className={window.location.pathname === '/Refund' ? 'active' : ''}>Return,Refund & Cancellation</Link></li>
-            <li><Link to="/Privacy" className={window.location.pathname === '/Privacy' ? 'active' : ''}>Privacy</Link></li>
-            <li><Link to="/Contact" className={window.location.pathname === '/Contact' ? 'active' : ''}>Contact</Link></li>
-
-
+          <li><Link to="/" className={window.location.hash === '#/' ? 'active' : ''}>Home</Link></li>
+            <li><Link to="/about" className={window.location.hash === '#/about' ? 'active' : ''}>About</Link></li>
+            <li><Link to="/terms" className={window.location.hash === '#/terms' ? 'active' : ''}>Terms & Condition</Link></li>
+            <li><Link to="/blogs" className={window.location.hash === '#/blogs' ? 'active' : ''}>Blogs</Link></li>
+            <li><Link to="/Refund" className={window.location.hash === '#/Refund' ? 'active' : ''}>Return,Refund & Cancellation</Link></li>
+            <li><Link to="/Privacy" className={window.location.hash === '#/Privacy' ? 'active' : ''}>Privacy</Link></li>
+            <li><Link to="/Contact" className={window.location.hash === '#/Contact' ? 'active' : ''}>Contact</Link></li>
 
           </ul>
           <div className={`hamburger-menu ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
@@ -178,15 +176,13 @@ const showErrorPopup = (message) => {
             <FontAwesomeIcon icon={faArrowLeft} />
           </button>
           <ul className="activeMenu">
-            <li><Link to="/" onClick={handleLinkClick} className={window.location.pathname === '/' ? 'active' : ''}>Home</Link></li>
-            <li> <Link to="/about" onClick={handleLinkClick} className={window.location.pathname === '/about' ? 'active' : ''}>About</Link></li>
-            <li><Link to="/terms" onClick={handleLinkClick} className={window.location.pathname === '/terms' ? 'active' : ''}>Terms</Link></li>
-            <li><Link to="/blogs" onClick={handleLinkClick} className={window.location.pathname === '/blogs' ? 'active' : ''}>Blogs</Link></li>
-            <li><Link to="/Refund" onClick={handleLinkClick} className={window.location.pathname === '/Refund' ? 'active' : ''}>Refund</Link></li>
-            <li><Link to="/Privacy" onClick={handleLinkClick} className={window.location.pathname === '/Privacy' ? 'active' : ''}>Privacy</Link></li>
-            <li><Link to="/Contact" onClick={handleLinkClick} className={window.location.pathname === '/Contact' ? 'active' : ''}>Contact</Link></li>
-
-
+          <li><Link to="/" onClick={handleLinkClick} className={window.location.hash === '#/' ? 'active' : ''}>Home</Link></li>
+            <li><Link to="/about" onClick={handleLinkClick} className={window.location.hash === '#/about' ? 'active' : ''}>About</Link></li>
+            <li><Link to="/terms" onClick={handleLinkClick} className={window.location.hash === '#/terms' ? 'active' : ''}>Terms</Link></li>
+            <li><Link to="/blogs" onClick={handleLinkClick} className={window.location.hash === '#/blogs' ? 'active' : ''}>Blogs</Link></li>
+            <li><Link to="/Refund" onClick={handleLinkClick} className={window.location.hash === '#/Refund' ? 'active' : ''}>Refund</Link></li>
+            <li><Link to="/Privacy" onClick={handleLinkClick} className={window.location.hash === '#/Privacy' ? 'active' : ''}>Privacy</Link></li>
+            <li><Link to="/Contact" onClick={handleLinkClick} className={window.location.hash === '#/Contact' ? 'active' : ''}>Contact</Link></li>
 
           </ul>
         </div>
@@ -198,12 +194,11 @@ const showErrorPopup = (message) => {
         {isMenuVisible && (
           <nav className="nav-components">
             <ul>
-              <li><a href="#home" onClick={handleLinkClick}>Home</a></li>
-              <li><a href="#about" onClick={handleLinkClick}>About</a></li>
-              <li><a href="#terms" onClick={handleLinkClick}>Terms</a></li>
-              <li><a href="#blog" onClick={handleLinkClick}>Blog</a></li>
-              <li><a href="#refund" onClick={handleLinkClick}>Refund</a></li>
-
+            <li><a href="#/" onClick={handleLinkClick}>Home</a></li>
+              <li><a href="#/about" onClick={handleLinkClick}>About</a></li>
+              <li><a href="#/terms" onClick={handleLinkClick}>Terms</a></li>
+              <li><a href="#/blogs" onClick={handleLinkClick}>Blog</a></li>
+              <li><a href="#/refund" onClick={handleLinkClick}>Refund</a></li>
             </ul>
           </nav>
         )}
