@@ -154,9 +154,9 @@ const showErrorPopup = (message) => {
           <ul className={`nav-list ${menuOpen ? 'open' : ''}`}>
             <li><Link to="/" className={window.location.pathname === '/' ? 'active' : ''}>Home</Link></li>
             <li><Link to="/about" className={window.location.pathname === '/about' ? 'active' : ''}>About</Link></li>
-            <li><Link to="/terms" className={window.location.pathname === '/terms' ? 'active' : ''}>Terms</Link></li>
+            <li><Link to="/terms" className={window.location.pathname === '/terms' ? 'active' : ''}>Terms & Condition</Link></li>
             <li><Link to="/blogs" className={window.location.pathname === '/blogs' ? 'active' : ''}>Blogs</Link></li>
-            <li><Link to="/Refund" className={window.location.pathname === '/Refund' ? 'active' : ''}>Refund</Link></li>
+            <li><Link to="/Refund" className={window.location.pathname === '/Refund' ? 'active' : ''}>Return,Refund & Cancellation</Link></li>
             <li><Link to="/Privacy" className={window.location.pathname === '/Privacy' ? 'active' : ''}>Privacy</Link></li>
             <li><Link to="/Contact" className={window.location.pathname === '/Contact' ? 'active' : ''}>Contact</Link></li>
 

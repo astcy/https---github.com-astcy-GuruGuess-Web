@@ -44,9 +44,9 @@ const About = () => {
           <ul className={`about-nav-list ${menuOpen ? 'active' : ''}`}>
             <li><a href="/" className={window.location.pathname === '/' ? 'active' : ''}>Home</a></li>
             <li><a href="/about" className={window.location.pathname === '/about' ? 'active' : ''}>About</a></li>
-            <li><a href="/terms" className={window.location.pathname === '/terms' ? 'active' : ''}>Terms</a></li>
+            <li><a href="/terms" className={window.location.pathname === '/terms' ? 'active' : ''}>Terms & Condition</a></li>
             <li><a href="/blogs" className={window.location.pathname === '/blogs' ? 'active' : ''}>Blogs</a></li>
-            <li><a href= "/Refund" className={window.location.pathname==='/Refund'?'active':''}>Refund</a></li>
+            <li><a href= "/Refund" className={window.location.pathname==='/Refund'?'active':''}>Refund,Return & Cancellation</a></li>
             <li><a href= "/Privacy" className={window.location.pathname==='/Privacy'?'active':''}>Privacy</a></li>
             <li><a href= "/Contact" className={window.location.pathname==='/Contact'?'active':''}>Contact</a></li>
 
